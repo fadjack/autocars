@@ -1,0 +1,154 @@
+<%- include('../partials/admin/head.ejs') %>
+
+
+
+<body>
+
+    <!-- main wrapper -->
+
+    <div class="dashboard-main-wrapper">
+
+        <!-- navbar -->
+
+        <%- include('../partials/admin/menu.ejs') %>
+
+        <!-- end navbar -->
+
+
+        <!-- left sidebar -->
+
+        <%- include('../partials/admin/sidebar.ejs') %>
+
+        
+
+        <div class="dashboard-wrapper">
+            <div class="container-fluid  dashboard-content">
+                <div class="row">
+                    <!-- metric -->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-muted">Total liste des voitures par ordre DESC</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h1 class="mb-1 text-primary"><%= totalcars %> </h1>
+                                </div>
+                               
+                            </div>
+                            <div id="sparkline-1"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- /. metric -->
+                    <!-- metric -->
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-muted">Total liste des utilisateurs </h5>
+                                <div class="metric-value d-inline-block">
+                                    <h1 class="mb-1 text-primary"><%= totalUsers %> </h1>
+                                </div>
+                            
+                            </div>
+                            <div id="sparkline-2"></div>
+                        </div>
+                    </div>
+                
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="text-muted">Revenue</h5>
+                                <div class="metric-value d-inline-block">
+                                    <h1 class="mb-1 text-primary">$5,656</h1>
+                                </div>
+                                <div class="metric-label d-inline-block float-right text-danger">
+                                    <i class="fa fa-fw fa-caret-down"></i><span>7.00%</span>
+                                </div>
+                            </div>
+                            <div id="sparkline-3">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- /. metric -->
+                    <!-- metric -->
+                 
+                    <!-- /. metric -->
+                </div>
+                <a class="btn btn-sm btn-primary" href="admin/cars/add"></i> Ajouter une voiture</a> </br> </br>
+
+                <!-- pagehader  -->
+
+                <div class="row">
+
+                    <!-- top selling products  -->
+
+                    <div class="col-md-12">
+                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            
+                        </div>
+                        <div class="card">
+                            <h5 class="card-header">Liste des voitures</h5>
+                            <div class="card-body p-0">
+                                <div class="table-responsive"></div>
+
+                                <table class="table">
+                                    <thead class="bg-light">
+                                        <tr class="border-0">
+                                            <th class="border-0">car_id</th>
+                                            <th class="border-0">Nom</th>
+                                            <th class="border-0">Etat</th>
+                                            <th class="border-0">prix </th>
+                                            <th class="border-0">kilométrage</th>
+                                            <th class="border-0">couleur</th>
+                                            <th class="border-0">année</th>
+                                            <th class="border-0">carburant</th>
+                                            <th class="border-0">catégorie</th>
+                                            <th class="border-0">fabricant</th>
+                                            <th class="border-0">date et heure</th>
+                                            <th class="border-0">image</th>
+                                            <th class="border-0">bouton</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%cars.forEach(function(car) {%>
+                                        <tr>
+                                            <td><%=car.car_id%></td>
+                                            <td><%=car.name%></td>
+                                            <td><%=car.content%></td>
+                                            <td><%=car.price%></td>
+                                            <td><%=car.kilometre%></td>
+                                            <td><%=car.color%></td>
+                                            <td><%=car.year%></td>
+                                            <td><%=car.carburant%></td>
+                                            <td><%=car.catégorie%></td>
+                                            <td><%=car.fabricant%></td>
+                                            <td><%=car.created_at%></td>
+                                            <td>
+                                                <div class="m-r-10"><img src="images/360degree-cars/<%=car.image%>"
+                                                        alt="user" class="rounded" width="45"></div>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-sm btn-primary" href="admin/cars/edit/<%=car.car_id%>"><i
+                                                        class="fa fa-edit"></i> Modifier</a>
+                                                <a class="btn btn-sm btn-danger" href="admin/cars/delete/<%=car.car_id%>"><i class="fa fa-trash"></i>
+                                                    Supprimer</a>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td> </td>
+
+                                        </tr>
+
+                                        <%});%>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <%- include('../partials/admin/script.ejs') %>
