@@ -16,6 +16,6 @@
     "express-session": "^1.17.1",
     "mysql": "^2.18.1",
     "req-flash": "0.0.3",
-    "swagger-ui-express": "^4.1.4"
+    "swagger-ui-express": "^4.1.5"
   }
 }
